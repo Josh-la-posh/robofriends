@@ -1,18 +1,18 @@
 import React, {useState } from 'react';
-import robots from './robots'
+// import robots from './robots'
 
 
-const Card = () => {
+const Card = ({robots}) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [robots, setRobots] = useState([]);
+    const [newRobots, setNewRobots] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(name && email){
-            const robot = {id: new Date().getTime().toString(), name, email};
-            setRobots((robots)=>{
-                return [...robots, robot];
+            const newRobot = {id: new Date().getTime().toString(), name, email};
+            setNewRobots((newRobots)=>{
+                return [...newRobots, newRobot];
             });
             setName('');
             setEmail('');
@@ -58,6 +58,26 @@ const Card = () => {
                 {robots.map(
                     (robot) => {
                         const {id, name, email} = robot;
+                        return (
+                            <div
+                                className='card-container'
+                                key={id}>
+                                <img
+                                    src={`https://robohash.org/${name}`}
+                                    alt="robot" />
+                                <h3>
+                                    {name}
+                                </h3>
+                                <p>
+                                    {email}
+                                </p>
+                            </div>
+                        )
+                })}
+                
+                {newRobots.map(
+                    (newRobot) => {
+                        const {id, name, email} = newRobot;
                         return (
                             <div
                                 className='card-container'

@@ -1,11 +1,13 @@
 import './App.css';
 import Card from './card'
-import React from 'react';
+import robots from './robots'
+import { useState } from 'react';
 
 function App() {
+  const [robot, setRobot] = useState(robots);
   return (
     <div className="App">
-      <Card/>
+      <Card robots={robot}/>
     </div>
   );
 }
