@@ -1,11 +1,18 @@
 import React, {useState } from 'react';
-// import robots from './robots'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const Card = ({robots}) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [newRobots, setNewRobots] = useState([]);
+    const [query, setQuery] = useState('');
+
+    const showingRobot = query === ''
+        ? robots
+        : robots.filter((robot)=>{
+             return robot.name.toLowerCase().includes(query.toLowerCase());        
+        });
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,8 +26,20 @@ const Card = ({robots}) => {
         }
     }
 
+    
     return (
-        <>
+        <div className='todo-container'>
+            <header>
+                <h1>My RoboFriends</h1>
+                <div className="search">
+                    <input type="text"
+                            placeholder='Search friends'
+                            onChange={(e) => setQuery(e.target.value)}
+                        />
+                    <button>Search</button>
+                </div>
+            </header>
+
             <form className='form'>
                 <div className='form-control'>
                     <label
@@ -55,7 +74,7 @@ const Card = ({robots}) => {
             </form>
 
             <div className='card'>
-                {robots.map(
+                {showingRobot.map(
                     (robot) => {
                         const {id, name, email} = robot;
                         return (
@@ -95,7 +114,7 @@ const Card = ({robots}) => {
                         )
                 })}
             </div>
-        </>
+        </div>
     )
 }
 
