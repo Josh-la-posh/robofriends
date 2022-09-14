@@ -1,11 +1,18 @@
+import { Provider } from 'react-redux'
+import { createStore } from 'redux';
+import {reducer} from './reducers';
 import './App.css';
-import Card from './card'
+import Card from './components/Card';
+
+const store = createStore(reducer);
 
 function App() {
   return (
-    <div className="App">
-      <Card />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Card />
+      </div>
+    </Provider>    
   );
 }
 
