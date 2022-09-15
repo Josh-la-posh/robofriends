@@ -1,6 +1,4 @@
-import { CHANGE_SEARCH_FIELD } from "./constants";
-import { CHANGE_NAME_FIELD } from "./constants";
-import { CHANGE_EMAIL_FIELD } from "./constants";
+import { CHANGE_SEARCH_FIELD, CHANGE_EMAIL_FIELD, CHANGE_NAME_FIELD, INCREMENT, DECREMENT, RESET } from "./constants";
 
 export const setQuery = (text) => {
     return {
@@ -20,5 +18,23 @@ export const setEmail = (text) => {
     return {
         type : CHANGE_EMAIL_FIELD,
         payload: text
+    }
+}
+
+export const addCount = () => {
+    return {
+        type : INCREMENT,  
+    }
+}
+
+export const subtractCount = () => {
+    return {
+        type : DECREMENT,
+    }
+}
+
+export const resetCount = () => {
+    return {
+        type: RESET
     }
 }
