@@ -20,21 +20,3 @@ export const setEmail = (text) => {
         payload: text
     }
 }
-
-export const addCount = () => {
-    return {
-        type : INCREMENT,  
-    }
-}
-
-export const subtractCount = () => {
-    return {
-        type : DECREMENT,
-    }
-}
-
-export const resetCount = () => {
-    return {
-        type: RESET
-    }
-}
